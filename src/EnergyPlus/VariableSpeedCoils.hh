@@ -67,16 +67,18 @@ namespace VariableSpeedCoils {
     struct VariableSpeedCoilData // variable speed coil
     {
         int MaxSpedLevels = 10;
+        Real64 AutoSize = -99999.0;
+        int AirCooled = 1;
         // Members
         std::string Name;              // Name of the  Coil
         std::string VarSpeedCoilType;  // type of coil
         int NumOfSpeeds = 2;               // Number of speeds
         int NormSpedLevel = MaxSpedLevels;          // Nominal speed level
-        Real64 RatedWaterVolFlowRate = EnergyPlus::DataSizing::AutoSize;  // Rated/Ref Water Volumetric Flow Rate [m3/s]
-        Real64 RatedWaterMassFlowRate = EnergyPlus::DataSizing::AutoSize; // Rated/Ref Water Volumetric Flow Rate [m3/s]
-        Real64 RatedAirVolFlowRate = EnergyPlus::DataSizing::AutoSize;    // Rated/Ref Air Volumetric Flow Rate [m3/s]
-        Real64 RatedCapHeat = EnergyPlus::DataSizing::AutoSize;           // Rated/Ref Heating Capacity [W]
-        Real64 RatedCapCoolTotal = EnergyPlus::DataSizing::AutoSize;      // Rated/Ref Total Cooling Capacity [W]
+        Real64 RatedWaterVolFlowRate = AutoSize;  // Rated/Ref Water Volumetric Flow Rate [m3/s]
+        Real64 RatedWaterMassFlowRate = AutoSize; // Rated/Ref Water Volumetric Flow Rate [m3/s]
+        Real64 RatedAirVolFlowRate = AutoSize;    // Rated/Ref Air Volumetric Flow Rate [m3/s]
+        Real64 RatedCapHeat = AutoSize;           // Rated/Ref Heating Capacity [W]
+        Real64 RatedCapCoolTotal = AutoSize;      // Rated/Ref Total Cooling Capacity [W]
         Real64 MaxONOFFCyclesperHour = 0.0;  // Maximum ON/OFF cycles per hour for the compressor (cycles/hour)
         Real64 Twet_Rated = 0.0;             // Nominal time for condensate to begin leaving the coil's
         // condensate drain line (sec)
@@ -214,7 +216,7 @@ namespace VariableSpeedCoils {
         Real64 CrankcaseHeaterConsumption = 0.0;    // report variable for total crankcase heater energy consumption [J]
         // condenser evaporative precooling
         int CondenserInletNodeNum= 0;       // Node number of outdoor condenser
-        int CondenserType = EnergyPlus::DataHVACGlobals::AirCooled;               // Type of condenser for DX cooling coil: AIR COOLED or EVAP COOLED
+        int CondenserType = AirCooled;               // Type of condenser for DX cooling coil: AIR COOLED or EVAP COOLED
         bool ReportEvapCondVars = false;         // true if any performance mode includes an evap condenser
         Real64 EvapCondPumpElecNomPower = 0.0; // Nominal power input to the evap condenser water circulation pump [W]
         Real64 EvapCondPumpElecPower = 0.0;    // Average power consumed by the evap condenser water circulation pump over
